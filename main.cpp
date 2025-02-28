@@ -6,22 +6,26 @@ using namespace std;
 string calculateLetterGrade(double weightedAverage) {
 	// Score to letter grade conversion
 	// A: [90, 100] B: [80, 89] C+: [75, 79] C: [70, 74] D: [60, 64] F: [0, 59]
+	// If... else if... Remember to use && to check between range and >= and <= to include uppwer and lower bounds.
 }
 
 double findMinQuiz(double quiz1, double quiz2, double quiz3, double quiz4) {
-
+	// Multiple ways to do this, easiest would be using if statements.
 }
 
 double findAverageQuizScore(double quiz1, double quiz2, double quiz3, double quiz4) {
 	// This will call findMinQuiz() to get the lowest quiz grade to remove
+	// Add the rest of the scores and divide by 3 to get the answer.
 }
 
 double findAverageHomeworkScore(double homework1, double homework2, double homework3, double homework4) {
-
+	// 2 scores are out of 10 and 2 out of 20.
+	// You would need to scale up two of the scores (multiply by 2) before calculating.
+	// The average would still be out of 20 however, to get the score out of 100 we'd multiply by 5.
 }
 
 double findAverageLabScore(double lab1, double lab2, double lab3, double lab4, double lab5, double lab6, double lab7, double lab8) {
-
+	// Add all scores and divide by 8.
 }
 
 int main() {
