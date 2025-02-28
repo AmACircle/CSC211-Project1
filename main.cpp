@@ -6,7 +6,7 @@ using namespace std;
 string calculateLetterGrade(double weightedAverage) {
 	// Score to letter grade conversion
 	// A: [90, 100] B: [80, 89] C+: [75, 79] C: [70, 74] D: [60, 64] F: [0, 59]
-	// If... else if... Remember to use && to check between range and >= and <= to include uppwer and lower bounds.
+	// If... else if... Remember to use && to check between range and >= and <= to include upper and lower bounds.
 }
 
 double findMinQuiz(double quiz1, double quiz2, double quiz3, double quiz4) {
