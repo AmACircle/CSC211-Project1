@@ -16,6 +16,11 @@ double findMinQuiz(double quiz1, double quiz2, double quiz3, double quiz4) {
 double findAverageQuizScore(double quiz1, double quiz2, double quiz3, double quiz4) {
 	// This will call findMinQuiz() to get the lowest quiz grade to remove
 	// Add the rest of the scores and divide by 3 to get the answer.
+	double minQuiz = findMinQuiz(quiz1, quiz2, quiz3, quiz4); // Gets the lowest quiz grade.
+	double totalSum = quiz1 + quiz2 + quiz3 + quiz4; // Adds up all 4 quiz grades.
+	double sumWithoutLowest = totalSum - minQuiz; // Subtracts the lowest from total.
+
+	return sumWithoutLowest / 3.0; // Quiz average based on the 3 remaining quizzes.
 }
 
 double findAverageHomeworkScore(double homework1, double homework2, double homework3, double homework4) {
