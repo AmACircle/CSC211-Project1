@@ -4,13 +4,41 @@
 using namespace std;
 
 string calculateLetterGrade(double weightedAverage) {
+	
 	// Score to letter grade conversion
 	// A: [90, 100] B: [80, 89] C+: [75, 79] C: [70, 74] D: [60, 64] F: [0, 59]
 	// If... else if... Remember to use && to check between range and >= and <= to include upper and lower bounds.
+
+	if (weightedAverage >= 90) {
+		return "A";
+	}
+	else if (weightedAverage >= 80) {
+		return "B";
+	}
+	else if (weightedAverage >= 75) {
+		return "C+";
+	}
+	else if (weightedAverage >= 70) {
+		return "C";
+	}
+	else if (weightedAverage >= 60) {
+		return "D";
+	}
+	else {
+		return "F";
+	}
 }
 
 double findMinQuiz(double quiz1, double quiz2, double quiz3, double quiz4) {
 	// Multiple ways to do this, easiest would be using if statements.
+
+	double minQuiz = quiz1;
+	
+	if (quiz2 < minQuiz) minQuiz = quiz2;
+	if (quiz3 < minQuiz) minQuiz = quiz3;
+	if (quiz4 < minQuiz) minQuiz = quiz4;
+	
+	return minQuiz;
 }
 
 double findAverageQuizScore(double quiz1, double quiz2, double quiz3, double quiz4) {
@@ -31,6 +59,8 @@ double findAverageHomeworkScore(double homework1, double homework2, double homew
 
 double findAverageLabScore(double lab1, double lab2, double lab3, double lab4, double lab5, double lab6, double lab7, double lab8) {
 	// Add all scores and divide by 8.
+	
+	return (lab1 + lab2 + lab3 + lab4 + lab5 + lab6 + lab7 + lab8) / 8;
 }
 
 int main() {
