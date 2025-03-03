@@ -89,7 +89,7 @@ int main() {
 
 	//creating 2 outputfiles
 	ofstream outFile1("gradesOut1.txt");
-	if (!outFile) {
+	if (!outFile1) {
 
 		cout << "Unable to open gradesOut1.txt." << endl;
 		return -1;
