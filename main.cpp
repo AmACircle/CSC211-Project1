@@ -60,7 +60,7 @@ double findAverageHomeworkScore(double homework1, double homework2, double homew
 double findAverageLabScore(double lab1, double lab2, double lab3, double lab4, double lab5, double lab6, double lab7, double lab8) {
 	// Add all scores and divide by 8.
 	
-	return (lab1 + lab2 + lab3 + lab4 + lab5 + lab6 + lab7 + lab8) / 8;
+	return (lab1 + lab2 + lab3 + lab4 + lab5 + lab6 + lab7 + lab8) / 8.0;
 }
 
 int main() {
@@ -78,7 +78,22 @@ int main() {
 	// Opening input file, with error handling
 	ifstream inputFile("gradesIn.txt");
 	if(!inputFile) {
-		cerr << "Unable to open the file." << endl;
+		cerr << "Unable to open gradesIn.txt." << endl;
+		return -1;
+	}
+
+	//creating 2 outputfiles
+	ofstream outFile1("gradesOut1.txt");
+	if (!outFile) {
+
+		cout << "Unable to open gradesOut1.txt." << endl;
+		return -1;
+	}
+	
+	ofstream outFile2("gradesOut2.txt");
+	if (!outFile2) {
+
+		cout << "Unable to open gradesOut2.txt." << endl;
 		return -1;
 	}
 
@@ -92,6 +107,8 @@ int main() {
 	}
 
 	inputFile.close();
+	outFile1.close();
+	outFile2.close();
 
 	return 0;
 }
