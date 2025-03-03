@@ -34,9 +34,14 @@ double findMinQuiz(double quiz1, double quiz2, double quiz3, double quiz4) {
 
 	double minQuiz = quiz1;
 	
-	if (quiz2 < minQuiz) minQuiz = quiz2;
-	if (quiz3 < minQuiz) minQuiz = quiz3;
-	if (quiz4 < minQuiz) minQuiz = quiz4;
+	if (quiz2 < minQuiz) 
+		minQuiz = quiz2;
+	
+	if (quiz3 < minQuiz) 
+		minQuiz = quiz3;
+	
+	if (quiz4 < minQuiz) 
+		minQuiz = quiz4;
 	
 	return minQuiz;
 }
