@@ -40,6 +40,7 @@ string calculateLetterGrade(double weightedAverage) {
 }
 
 double findMinQuiz(double quizzes[], int size = 4) {
+	// Finds the lowest quiz grade in the array, then return the index.
 	int lowest, lowestIndex = 0;
 
 	for(int i = 0; i < size; i++) {
@@ -123,6 +124,7 @@ int main() {
 	// This just checks to see if there's > 40 students AND if the input has a first and last name to take in, otherwise it'll terminate the loop.
 	while(count < MAX_STUDENTS && inputFile >> students[count].firstName >> students[count].lastName) {
 		inputFile >> students[count].attendance;
+		students[count].attendance *= 10;
 		for(int i = 0; i < 8; i++) {
 			inputFile >> students[count].labScores[i];
 		}
@@ -136,6 +138,7 @@ int main() {
 		}
 
 		inputFile >> students[count].groupWork;
+		students[count].groupWork *= 10;
 		inputFile >> students[count].midtermAverage;
 		inputFile >> students[count].finalAverage;
 
@@ -143,11 +146,11 @@ int main() {
 		students[count].labAverage = findAverageLabScore(students[count].labScores);
 		students[count].homeworkAverage = findAverageHomeworkScore(students[count].homeworkScores);
 
-		students[count].courseAverage = students[count].attendance * 0.10 +
+		students[count].courseAverage = (students[count].attendance * 10) * 0.10 +
 										students[count].quizAverage * 0.15 +
 										students[count].labAverage * 0.15 +
 										students[count].homeworkAverage * 0.15 +
-										students[count].groupWork * 0.05 +
+										(students[count].groupWork * 10) * 0.05 +
 										students[count].midtermAverage * 0.20 +
 										students[count].finalAverage * 0.20;
 
