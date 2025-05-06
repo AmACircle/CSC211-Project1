@@ -1,120 +1,120 @@
 Alice Smith
-76.78
-C+
+89.38
+B
 
 Bob Johnson
-67.75
-D
+79.00
+C+
 
 Charlie Brown
-83.12
-B
+96.62
+A
 
 Diana Prince
-75.48
-C+
+87.62
+B
 
 Ethan Hunt
-67.29
-D
+77.19
+C+
 
 Fiona Gallagher
-75.16
-C+
+86.41
+B
 
 George Michael
-70.84
-C
+82.54
+B
 
 Hannah Montana
-84.21
-B
+97.71
+A
 
 Ian Fleming
-65.46
-D
+74.91
+C
 
 Julia Roberts
-77.94
-C+
+90.09
+A
 
 Kevin Bacon
-73.43
-C
+84.67
+B
 
 Laura Palmer
-82.25
-B
+95.75
+A
 
 Michael Scott
-68.56
-D
+78.46
+C+
 
 Pam Beesly
-75.09
-C+
+87.24
+B
 
 Jim Halpert
-71.22
-C
+82.03
+B
 
 Dwight Schrute
-84.19
-B
+97.69
+A
 
 Stanley Hudson
-73.24
-C
+84.94
+B
 
 Phyllis Lapin
-75.99
-C+
+88.14
+B
 
 Meredith Palmer
-65.58
-D
+75.03
+C+
 
 Ryan Howard
-71.65
-C
+82.45
+B
 
 Kelly Kapoor
-77.88
-C+
+90.03
+A
 
 Oscar Martinez
-84.02
-B
+97.52
+A
 
 Angela Martin
-72.54
-C
-
-Creed Bratton
-65.61
-D
-
-Toby Flenderson
-71.33
-C
-
-Robert California
-80.26
+83.34
 B
 
-Jan Levinson
-73.02
-C
-
-Gabe Lewis
-67.36
-D
-
-Andy Bernard
-77.75
+Creed Bratton
+75.06
 C+
 
+Toby Flenderson
+82.12
+B
+
+Robert California
+92.41
+A
+
+Jan Levinson
+83.83
+B
+
+Gabe Lewis
+77.26
+C+
+
+Andy Bernard
+89.90
+B
+
 Erin Hannon
-72.25
-C
+83.05
+B
 
