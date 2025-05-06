@@ -23,7 +23,7 @@ struct Student {
 
 string calculateLetterGrade(double weightedAverage) {
 	// Score to letter grade conversion
-	// A: [90, 100] B: [80, 89] C+: [75, 79] C: [70, 74] D: [60, 64] F: [0, 59]
+	// A: [90, 100] B: [80, 89] C+: [75, 79] C: [70, 74] D: [60, 69] F: [0, 59]
 	if(weightedAverage >= 90) {
 		return "A";
 	} else if(weightedAverage >= 80) {
@@ -39,10 +39,12 @@ string calculateLetterGrade(double weightedAverage) {
 	}
 }
 
-double findMinQuiz(double quizzes[], int size = 4) {
-	int lowest, lowestIndex = 0;
+int findMinQuiz(double quizzes[], int size = 4) {
+	// Finds the lowest quiz grade in the array, then return the index.
+	double lowest = quizzes[0]; // Initialize with first quiz
+	int lowestIndex = 0;
 
-	for(int i = 0; i < size; i++) {
+	for(int i = 1; i < size; i++) {  // Start from second element (i=1)
 		if(quizzes[i] < lowest) {
 			lowest = quizzes[i];
 			lowestIndex = i;
@@ -54,42 +56,48 @@ double findMinQuiz(double quizzes[], int size = 4) {
 
 double findAverageQuizScore(double quizzes[], int size = 4) {
 	int minQuizIndex = findMinQuiz(quizzes); // Gets the lowest quiz grade.
-	double sum, sumWithoutLowest = 0;
+	double sum = 0;
 
 	for(int i = 0; i < size; i++) {
 		sum += quizzes[i];
 	}
 
-	sumWithoutLowest = sum -= quizzes[minQuizIndex];
+	double sumWithoutLowest = sum - quizzes[minQuizIndex];
 
 	return (sumWithoutLowest / 3.0); // Quiz average based on the 3 remaining quizzes.
 }
 
 double findAverageHomeworkScore(double homeworks[], int size = 4) {
 	// 2 scores are out of 10 and 2 out of 20.
-	// You would need to scale up two of the scores (multiply by 2) before calculating.
-	// The average would still be out of 20 however, to get the score out of 100 we'd multiply by 5.
-	double sum = 0;
-	for(int i = 0; i < size - 2; i++) {
-		homeworks[i] *= 2; // Scales the first two scores out of 10 to out of 20.
-	}
-
+	// We need to make a copy because we don't want to modify the original scores
+	double scaledHomeworks[4];
 	for(int i = 0; i < size; i++) {
-		sum += homeworks[i];
+		scaledHomeworks[i] = homeworks[i];
 	}
 
-	return (sum * 5.0) / 4.0; // sum * 5 makes the scores out of 100, then get the average.
+	// Scale the first two scores out of 10 to out of 20
+	for(int i = 0; i < 2; i++) {
+		scaledHomeworks[i] *= 2;
+	}
+
+	double sum = 0;
+	for(int i = 0; i < size; i++) {
+		sum += scaledHomeworks[i];
+	}
+
+	// Average out of 20, then convert to percentage (out of 100)
+	return (sum / 4.0) * 5.0;
 }
 
 double findAverageLabScore(double labs[], int size = 8) {
-	// Add all scores and divide by 8.
-	double sum, labAverage = 0;
+	// Add all scores and divide by 8, then multiply by 10 to get out of 100
+	double sum = 0;
 
 	for(int i = 0; i < size; i++) {
 		sum += labs[i];
 	}
 
-	return (sum * 10.0) / 8.0; // Score out of 100
+	return (sum / size) * 10.0; // Convert to score out of 100
 }
 
 int main() {
@@ -120,9 +128,10 @@ int main() {
 	// This will get rid of the header
 	getline(inputFile, line);
 
-	// This just checks to see if there's > 40 students AND if the input has a first and last name to take in, otherwise it'll terminate the loop.
-	while(count < MAX_STUDENTS && inputFile >> students[count].firstName >> students[count].lastName) {
+	// Read the entire file until EOF
+	while(inputFile >> students[count].firstName >> students[count].lastName) {
 		inputFile >> students[count].attendance;
+
 		for(int i = 0; i < 8; i++) {
 			inputFile >> students[count].labScores[i];
 		}
@@ -136,6 +145,7 @@ int main() {
 		}
 
 		inputFile >> students[count].groupWork;
+
 		inputFile >> students[count].midtermAverage;
 		inputFile >> students[count].finalAverage;
 
@@ -143,11 +153,12 @@ int main() {
 		students[count].labAverage = findAverageLabScore(students[count].labScores);
 		students[count].homeworkAverage = findAverageHomeworkScore(students[count].homeworkScores);
 
-		students[count].courseAverage = students[count].attendance * 0.10 +
-										students[count].quizAverage * 0.15 +
+		// Calculate course average properly with the weights
+		students[count].courseAverage = (students[count].attendance * 10) * 0.10 +  // Convert to percentage (out of 100)
 										students[count].labAverage * 0.15 +
 										students[count].homeworkAverage * 0.15 +
-										students[count].groupWork * 0.05 +
+										students[count].quizAverage * 0.15 +
+										(students[count].groupWork * 10) * 0.05 +   // Convert to percentage (out of 100)
 										students[count].midtermAverage * 0.20 +
 										students[count].finalAverage * 0.20;
 
@@ -160,14 +171,15 @@ int main() {
 	ofstream outputFile1("gradesOut1.txt");
 	ofstream outputFile2("gradesOut2.txt");
 
+	// This ensures each the grades will have 2 decimal points max
 	outputFile1 << fixed << setprecision(2);
 	outputFile2 << fixed << setprecision(2);
 
 	for(int i = 0; i < count; i++) {
 		string fullName = students[i].firstName + " " + students[i].lastName;
 		outputFile1	<< fullName << endl
-					<< students[i].attendance << endl
-					<< students[i].groupWork << endl
+					<< students[i].attendance * 10 << endl
+					<< students[i].groupWork * 10 << endl
 					<< students[i].quizAverage << endl
 					<< students[i].labAverage << endl
 					<< students[i].homeworkAverage << endl
