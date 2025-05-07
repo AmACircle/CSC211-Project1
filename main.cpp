@@ -177,7 +177,7 @@ int main() {
 
 	for(int i = 0; i < count; i++) {
 		string fullName = students[i].firstName + " " + students[i].lastName;
-		outputFile1	<< fullName << endl
+		outputFile1 << fullName << endl
 					<< students[i].attendance * 10 << endl
 					<< students[i].groupWork * 10 << endl
 					<< students[i].quizAverage << endl
